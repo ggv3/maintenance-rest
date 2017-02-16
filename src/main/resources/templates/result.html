@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>New Vehicle Details</title>
+</head>
+<body>
+	<h1>Added vehicle: </h1>
+	<p th:text="'Name: ' + ${vehicle.displayName}" /><br/>
+	<p th:text="'Total kilometers Driven: ' + ${vehicle.totalKilometersDriven}"/>
+</body>
+</html>
