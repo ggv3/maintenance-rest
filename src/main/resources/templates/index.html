@@ -6,14 +6,5 @@
 </head>
 <body>
 	<h1>Hello World!</h1> <br/>
-	<p>Add a new Vehicle!</p>
-	<form action="#" th:action="@{/}" th:object="${vehicle}" method="post">
-	<p>Name: <input type="text" th:field="*{displayName}" /> </p>
-	<p>Total kilometers driven: <input type="number" th:field="*{totalKilometersDriven}"/> </p>
-	<p>Latest inspection date: <input type="text" th:field="*{latestInspectionDate}"/> </p>
-	<p>Last inspection date: <input type="text" th:field="*{lastInspectionDate}"/> </p>
-	<p>Latest oil change: <input type="text" th:field="*{latestOilChange}"/> </p>
-	<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-	</form>
 </body>
 </html>
