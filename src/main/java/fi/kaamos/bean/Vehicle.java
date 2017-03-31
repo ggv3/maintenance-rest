@@ -1,31 +1,55 @@
 package fi.kaamos.bean;
 
-public class Vehicle {
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class Vehicle {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	private int userId;
 	private int type;
-	private String displayName;
-	private int totalKilometersDriven;
-	private String latestInspectionDate;
-	private String lastInspectionDate;
-	private String latestOilChange;
+	private String displayname;
+	private int totalkilometersdriven;
+	private String latestinspectiondate;
+	private String lastinspectiondate;
+	private String latestoilchange;
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "userid")
+	private User user;
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "vehicle")
+	private List<Servicelog> servicelog;
 	
 	public Vehicle() {
 		super();
 	}
 
-	public Vehicle(int id, int userId, int type, String displayName, int totalKilometersDriven,
-			String latestInspectionDate, String lastInspectionDate, String latestOilChange) {
+	public Vehicle(int id, int userId, int type, String displayname,
+			int totalkilometersdriven, String latestinspectiondate,
+			String lastinspectiondate, String latestoilchange, User user,
+			List<Servicelog> servicelog) {
 		super();
 		this.id = id;
-		this.userId = userId;
 		this.type = type;
-		this.displayName = displayName;
-		this.totalKilometersDriven = totalKilometersDriven;
-		this.latestInspectionDate = latestInspectionDate;
-		this.lastInspectionDate = lastInspectionDate;
-		this.latestOilChange = latestOilChange;
+		this.displayname = displayname;
+		this.totalkilometersdriven = totalkilometersdriven;
+		this.latestinspectiondate = latestinspectiondate;
+		this.lastinspectiondate = lastinspectiondate;
+		this.latestoilchange = latestoilchange;
+		this.user = user;
+		this.servicelog = servicelog;
 	}
 
 	public int getId() {
@@ -36,14 +60,6 @@ public class Vehicle {
 		this.id = id;
 	}
 
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
 	public int getType() {
 		return type;
 	}
@@ -52,51 +68,69 @@ public class Vehicle {
 		this.type = type;
 	}
 
-	public String getDisplayName() {
-		return displayName;
+	public String getdisplayname() {
+		return displayname;
 	}
 
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
+	public void setdisplayname(String displayname) {
+		this.displayname = displayname;
 	}
 
-	public int getTotalKilometersDriven() {
-		return totalKilometersDriven;
+	public int gettotalkilometersdriven() {
+		return totalkilometersdriven;
 	}
 
-	public void setTotalKilometersDriven(int totalKilometersDriven) {
-		this.totalKilometersDriven = totalKilometersDriven;
+	public void settotalkilometersdriven(int totalkilometersdriven) {
+		this.totalkilometersdriven = totalkilometersdriven;
 	}
 
-	public String getLatestInspectionDate() {
-		return latestInspectionDate;
+	public String getlatestinspectiondate() {
+		return latestinspectiondate;
 	}
 
-	public void setLatestInspectionDate(String latestInspectionDate) {
-		this.latestInspectionDate = latestInspectionDate;
+	public void setlatestinspectiondate(String latestinspectiondate) {
+		this.latestinspectiondate = latestinspectiondate;
 	}
 
-	public String getLastInspectionDate() {
-		return lastInspectionDate;
+	public String getlastinspectiondate() {
+		return lastinspectiondate;
 	}
 
-	public void setLastInspectionDate(String lastInspectionDate) {
-		this.lastInspectionDate = lastInspectionDate;
+	public void setlastinspectiondate(String lastinspectiondate) {
+		this.lastinspectiondate = lastinspectiondate;
 	}
 
-	public String getLatestOilChange() {
-		return latestOilChange;
+	public String getlatestoilchange() {
+		return latestoilchange;
 	}
 
-	public void setLatestOilChange(String latestOilChange) {
-		this.latestOilChange = latestOilChange;
+	public void setlatestoilchange(String latestoilchange) {
+		this.latestoilchange = latestoilchange;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Servicelog> getServicelog() {
+		return servicelog;
+	}
+
+	public void setServicelog(List<Servicelog> servicelog) {
+		this.servicelog = servicelog;
 	}
 
 	@Override
 	public String toString() {
-		return "Vehicle [id=" + id + ", userId=" + userId + ", type=" + type + ", displayName=" + displayName
-				+ ", totalKilometersDriven=" + totalKilometersDriven + ", latestInspectionDate=" + latestInspectionDate
-				+ ", lastInspectionDate=" + lastInspectionDate + ", latestOilChange=" + latestOilChange + "]";
+		return "Vehicle [id=" + id + ", type=" + type
+				+ ", displayname=" + displayname + ", totalkilometersdriven="
+				+ totalkilometersdriven + ", latestinspectiondate="
+				+ latestinspectiondate + ", lastinspectiondate="
+				+ lastinspectiondate + ", latestoilchange=" + latestoilchange
+				+ ", user=" + user + ", servicelog=" + servicelog + "]";
 	}
-	
 }
