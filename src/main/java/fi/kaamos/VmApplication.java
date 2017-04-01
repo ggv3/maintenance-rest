@@ -7,7 +7,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 public class VmApplication extends SpringBootServletInitializer {
-	@Override protected SpringApplicationBuilder configure (SpringApplicationBuilder application) {
+	@Override 
+	protected SpringApplicationBuilder configure (SpringApplicationBuilder application) {
 		return application.sources(VmApplication.class);
 	}
 	public static void main(String[] args) {
