@@ -3,6 +3,7 @@ package fi.kaamos.bean;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,14 +12,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Vehicle {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int Id;
 	private int type;
 	private String displayname;
 	private int totalkilometersdriven;
@@ -28,19 +28,18 @@ public class Vehicle {
 	@ManyToOne
 	@JoinColumn(name = "userid")
 	private User user;
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "vehicle")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "vehicle")
 	private List<Servicelog> servicelog;
-	
+
 	public Vehicle() {
 		super();
 	}
 
-	public Vehicle(int id, int userId, int type, String displayname,
-			int totalkilometersdriven, String latestinspectiondate,
-			String lastinspectiondate, String latestoilchange, User user,
+	public Vehicle(int id, int userId, int type, String displayname, int totalkilometersdriven,
+			String latestinspectiondate, String lastinspectiondate, String latestoilchange, User user,
 			List<Servicelog> servicelog) {
 		super();
-		this.id = id;
+		this.Id = id;
 		this.type = type;
 		this.displayname = displayname;
 		this.totalkilometersdriven = totalkilometersdriven;
@@ -52,11 +51,11 @@ public class Vehicle {
 	}
 
 	public int getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.Id = id;
 	}
 
 	public int getType() {
@@ -125,11 +124,9 @@ public class Vehicle {
 
 	@Override
 	public String toString() {
-		return "Vehicle [id=" + id + ", type=" + type
-				+ ", displayname=" + displayname + ", totalkilometersdriven="
-				+ totalkilometersdriven + ", latestinspectiondate="
-				+ latestinspectiondate + ", lastinspectiondate="
-				+ lastinspectiondate + ", latestoilchange=" + latestoilchange
-				+ ", user=" + user + ", servicelog=" + servicelog + "]";
+		return "Vehicle [id=" + Id + ", type=" + type + ", displayname=" + displayname + ", totalkilometersdriven="
+				+ totalkilometersdriven + ", latestinspectiondate=" + latestinspectiondate + ", lastinspectiondate="
+				+ lastinspectiondate + ", latestoilchange=" + latestoilchange + ", user=" + user + ", servicelog="
+				+ servicelog + "]";
 	}
 }

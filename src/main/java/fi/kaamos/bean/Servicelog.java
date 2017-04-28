@@ -1,5 +1,6 @@
 package fi.kaamos.bean;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,14 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Servicelog {
 	
 	@Id
+	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int Id;
 	private String entry;
 	private String date;
 	@ManyToOne
@@ -25,16 +25,16 @@ public class Servicelog {
 	}
 	public Servicelog(int id, String entry, String date, Vehicle vehicle) {
 		super();
-		this.id = id;
+		this.Id = id;
 		this.entry = entry;
 		this.date = date;
 		this.vehicle = vehicle;
 	}
 	public int getId() {
-		return id;
+		return Id;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.Id = id;
 	}
 	public String getEntry() {
 		return entry;
@@ -56,7 +56,7 @@ public class Servicelog {
 	}
 	@Override
 	public String toString() {
-		return "ServiceLog [id=" + id + ", entry=" + entry + ", date=" + date
+		return "ServiceLog [id=" + Id + ", entry=" + entry + ", date=" + date
 				+ ", vehicle=" + vehicle + "]";
 	}
 	
