@@ -26,7 +26,6 @@ public class Vehicle {
 	private String lastinspectiondate;
 	private String latestoilchange;
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name = "userid")
 	private User user;
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "vehicle")

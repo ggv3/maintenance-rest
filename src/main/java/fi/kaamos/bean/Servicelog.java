@@ -18,7 +18,6 @@ public class Servicelog {
 	private String entry;
 	private String date;
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name="vehicleid")
 	private Vehicle vehicle;
 	public Servicelog() {

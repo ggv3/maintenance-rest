@@ -13,13 +13,5 @@ import fi.kaamos.bean.VehicleRepository;
 
 @RestController
 public class VehicleController {
-	
-	@Autowired
-	VehicleRepository repository;
-	
-	@RequestMapping(value="/vehicles", method = RequestMethod.GET)
-	public @ResponseBody List<Vehicle> vehicleListRest() {
-		return (List<Vehicle>) repository.findById(1);
-	}
 
 }
